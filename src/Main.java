@@ -1,16 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
 
 public class Main {
     public static void main( String[] args) {
     }
+
     public void charArray (char[] array) {
         System.out.println(array);
     }
 
     public char[] toCharArray (int[] array){
-        char[] charArray = {'b'};
+        char[] charArray = new char[array.length];
+        for (int i =0; i<array.length; i++) {
+            char symbol =(char) array[i];
+            charArray[i] = symbol;
+        }
         return charArray;
     }
 
@@ -76,7 +79,20 @@ public class Main {
     }
 
     public void sorting (int [] array){
-        Arrays.sort(array);
+        boolean isSorted = false;
+        int index;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < array.length - 1; i++) {
+                if(array[i]> array[i+1]){
+                    isSorted = false;
+
+                    index = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = index;
+                }
+            }
+        }
     }
 
     public boolean reiteration (byte [] array) {
@@ -99,33 +115,32 @@ public class Main {
     }
 
     public int [] offSet (int [] arrayfirst, int [] arraysecond) {
-        List<Integer> resultList = new ArrayList<>();
+       int size = arrayfirst.length + arraysecond.length;
+       int [] arrayResult = new int[size];
+       int index = 0;
         for (int i = 0; i < arrayfirst.length; i++) {
-            boolean found = false;
+            boolean  found = false;
             for (int j = 0; j < arraysecond.length; j++) {
                 if (arrayfirst[i] == arraysecond[j]) {
                     found = true;
-                    break;
                 }
             }
             if (!found) {
-                resultList.add(arrayfirst[i]);
+                arrayResult[index++] = arrayfirst[i];
             }
         }
         for (int i = 0; i < arraysecond.length; i++) {
-            boolean found = false;
+            boolean  found = false;
             for (int j = 0; j < arrayfirst.length; j++) {
                 if (arraysecond[i] == arrayfirst[j]) {
                     found = true;
-                    break;
                 }
             }
             if (!found) {
-                resultList.add(arraysecond[i]);
+                arrayResult[index++] = arraysecond[i];
             }
         }
-        int[] resultArray = resultList.stream().mapToInt(Integer::intValue).toArray();
-        return resultArray;
+        return Arrays.copyOf(arrayResult, index);
     }
 
     public int[] reverseArray(int[] arrayfirst) {
@@ -151,5 +166,4 @@ public class Main {
         }
         return false;
     }
-
 }

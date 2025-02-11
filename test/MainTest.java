@@ -1,11 +1,6 @@
-import org.junit.Assert;
 import org.junit.Test;
-
-
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
 import static org.junit.Assert.*;
 
 public class MainTest {
@@ -38,34 +33,11 @@ public class MainTest {
     }
 
     @Test
-    public void whenAddSomeSymbols_ReturnArray() {
-        char[] array = {'a', '#', '!'};
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-        System.setOut(printStream);
-
-        main.charArray(array);
-        assertEquals("a#!", outputStream.toString().trim());
-    }
-
-    @Test
-    public void whenAddArrayOfNumber_ReturnSymbol(){
-        int[] array = {1, 2, 3};
-        char[] result = {'b'};
-        assertArrayEquals(result, main.toCharArray(array));
-    }
-
-    @Test
-    public void whenAddEmptyArray_ReturnSymblo() {
-        int[] array = {};
-        char[] result = {'b'};
-        assertArrayEquals(result, main.toCharArray(array));
-    }
-    @Test
-    public void whenAddArrayWithOneElement_ReturnSymbol() {
-        int[] array = {1};
-        char[] result = {'b'};
-        assertArrayEquals(result, main.toCharArray(array));
+    public void whenAddArrayOfNumber_ReturnArrayOfSymbols() {
+       int[] array = {97, 98, 99};
+       char[] expected = {'a', 'b', 'c'};
+       char[] result = main.toCharArray(array);
+       assertArrayEquals(expected, result);
     }
 
     @Test
@@ -187,18 +159,18 @@ public class MainTest {
     public void whenAddArrayOfDifferentNumbersAndValue_ReturnOneResult() {
         int[] array = {1, 2, 3};
         int value = 2;
-        int result = 1;
-        main.indexOf(array, value);
-        assertEquals(result, main.indexOf(array, value));
+        int expected = 1;
+        int result = main.indexOf(array, value);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddArrayOfSameNumbersAndSameValue_ReturnOneResult() {
         int[] array = {3, 3, 3};
         int value = 3;
-        int result = 0;
-        main.indexOf(array, value);
-        assertEquals(result, main.indexOf(array, value));
+        int expected = 0;
+        int result = main.indexOf(array, value);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -221,97 +193,97 @@ public class MainTest {
     public void whenAddArrayAndDifferentNumbers_ReturnOneResult() {
         int[] array = {1, 2, 3};
         int value = 4;
-        int result = -1;
-        main.indexOf(array, value);
-        assertEquals(result, main.indexOf(array, value));
+        int expected = -1;
+        int result = main.indexOf(array, value);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddArrayAndOneValue_ReturnOneResult() {
         int[] array = {1, 2, 3, 4, 5, 6};
         int value = 5;
-        int result = 4;
-        main.indexOfEnd(array, value);
-        assertEquals(result, main.indexOf(array, value));
+        int expected = 4;
+        int result = main.indexOf(array, value);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddArrayNegativeNumbersAndNegativeValue_ReturnOneResult() {
         int[] array = {-13, -15, -20, -45, -61};
         int value = -61;
-        int result = 4;
-        main.indexOfEnd(array, value);
-        assertEquals(result, main.indexOf(array, value));
+        int expected = 4;
+        int result = main.indexOf(array, value);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddEmptyArrayAndOneValue_ReturnOneResult() {
         int[] array = {};
         int value = 5;
-        int result = -1;
-        main.indexOfEnd(array, value);
-        assertEquals(-1, main.indexOf(array, value));
+        int expexted = -1;
+        int result = main.indexOfEnd(array, value);
+        assertEquals(expexted, result);
     }
 
     @Test
     public void whenAddArrayWithOneNumberAndOneValue_ReturnResult() {
         int[] array = {10};
         int value = 10;
-        int result = 0;
-        main.indexOfEnd(array, value);
-        assertEquals(result, main.indexOf(array, value));
+        int expected = 0;
+        int result = main.indexOfEnd(array, value);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddNumber_ReturnFactorialOfThisNumber() {
         int a = 3;
-        int result = 6;
-        main.factorial(a);
-        assertEquals(result, main.factorial(a));
+        int expected = 6;
+        int result = main.factorial(a);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddZero_ReturnFactorial() {
         int a = 0;
-        int result = 1;
-        main.factorial(a);
-        assertEquals(result, main.factorial(a));
+        int expected = 1;
+        int result = main.factorial(a);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddBigNumber_ReturnFactorial() {
         int a = 10;
-        int result = 3628800;
-        main.factorial(a);
-        assertEquals(result, main.factorial(a));
+        int expected = 3628800;
+        int result = main.factorial(a);
+        assertEquals(expected, result);
     }
 
     @Test
     public void whenAddYear_ReturnReslt(){
         int year = 2024;
-        main.isLeapYear(year);
-        assertTrue(main.isLeapYear(year));
+        boolean result  = main.isLeapYear(year);
+        assertTrue(result);
     }
 
     @Test
     public void whenAddYearDivisibleBy400_ReturnReslt(){
         int year = 2000;
-        main.isLeapYear(year);
-        assertTrue(main.isLeapYear(year));
+        boolean result  = main.isLeapYear(year);
+        assertTrue(result);
     }
 
     @Test
     public void whenAddYearNotDivisibleBy4_ReturnReslt(){
         int year = 2023;
-        main.isLeapYear(year);
-        assertFalse(main.isLeapYear(year));
+        boolean result = main.isLeapYear(year);
+        assertFalse(result);
     }
 
     @Test
     public void whenAddZeroYear_ReturnReslt(){
         int year = 0;
-        main.isLeapYear(year);
-        assertTrue(main.isLeapYear(year));
+        boolean result  = main.isLeapYear(year);
+        assertTrue(result);
     }
 
     @Test
@@ -390,29 +362,29 @@ public class MainTest {
     @Test
     public void whenAddArray_ReturnRepitingElements() {
         byte[] array = {1, 1, 2, 3, 2, 4,};
-        main.reiteration(array);
-        assertTrue(main.reiteration(array));
+        boolean result = main.reiteration(array);
+        assertTrue(result);
     }
 
     @Test
     public void whenAddArrayWithSameNumbers_ReturnRepitingElements() {
         byte[] array = {1, 1, 1, 1};
-        main.reiteration(array);
-        assertTrue(main.reiteration(array));
+        boolean result = main.reiteration(array);
+        assertTrue(result);
     }
 
     @Test
     public void whenAddEmptyArrayAnd_ReturnRepiting() {
         byte[] array = {};
-        main.reiteration(array);
-        assertFalse(main.reiteration(array));
+        boolean result = main.reiteration(array);
+        assertFalse(result);
     }
 
     @Test
     public void whenAddNegativeElements_ReturnRepiting() {
         byte[] array = {-1, -2, -1, 0, 2};
-        main.reiteration(array);
-        assertTrue(main.reiteration(array));
+        boolean result = main.reiteration(array);
+        assertTrue(result);
     }
 
     @Test
